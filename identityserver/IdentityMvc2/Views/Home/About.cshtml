@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+@using Microsoft.AspNetCore.Authentication
+<div>
+    <strong>id_token</strong>
+    <span>@await ViewContext.HttpContext.GetTokenAsync("id_token")</span>
+</div>
+<div>
+    <strong>access_token</strong>
+    <span>@await ViewContext.HttpContext.GetTokenAsync("access_token")</span>
+</div>
+<h1>@ViewData["Title"]</h1>
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
